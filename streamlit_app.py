@@ -38,7 +38,7 @@ def draw_pie_chart(data, country_name):
     # 绘制饼状图
     base = alt.Chart(pie_data).encode(
         theta=alt.Theta(field="Percentage", type="quantitative"),
-        color=alt.Color(field="Industry", type="nominal"),
+        color=alt.Color(field="Industry", type="nominal", scale=alt.Scale(scheme='category20c')),
         tooltip=[alt.Tooltip('Industry'), alt.Tooltip('GVA:Q', format='~e')]
     ).properties(
         title=f'{country_name}'
@@ -194,7 +194,7 @@ industry_contribution = alt.Chart(df_selected_countries).transform_fold(
 ).mark_bar().encode(
     x='sum(GVA):Q',
     y='country:N',
-    color=alt.Color('Industry:N'),
+    color=alt.Color('Industry:N', scale=alt.Scale(scheme='category20c')),
 ).properties(
     width=800,
     height=300,
