@@ -1,3 +1,0 @@
-The dataset is compiled from the National Accounts Main Aggregates Database that presents a series of analytical national accounts tables from 1970 onwards for more than 200 countries and areas of the world. It is the product of a global cooperation effort between the Economic Statistics Branch of the United Nations Statistics Division, international statistical agencies, and the national statistical services of these countries and is developed in accordance with the recommendation of the Statistical Commission at its first session in 1947 that the Statistics Division should publish regularly the most recent available data on national accounts for as many countries and areas as possible.
-
-This dataset can be used to perform clustering, regression, and time series tasks.
