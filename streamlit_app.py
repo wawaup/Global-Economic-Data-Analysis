@@ -5,6 +5,9 @@ import streamlit as st
 from vega_datasets import data as vega_data
 alt.data_transformers.disable_max_rows()
 
+st.title('Global Economic Data Analysis')
+# st.write('This page uses custom margins.')
+
 def draw_pie_chart(data, country_name):
     # 筛选指定国家的数据
     country_data = data[(data['country'] == country_name) & (data['year'] == 2021)]
@@ -35,7 +38,7 @@ def draw_pie_chart(data, country_name):
     # 绘制饼状图
     base = alt.Chart(pie_data).encode(
         theta=alt.Theta(field="Percentage", type="quantitative"),
-        color=alt.Color(field="Industry", type="nominal", scale=alt.Scale(scheme='category20c')),
+        color=alt.Color(field="Industry", type="nominal"),
         tooltip=[alt.Tooltip('Industry'), alt.Tooltip('GVA:Q', format='~e')]
     ).properties(
         title=f'{country_name}'
@@ -191,7 +194,7 @@ industry_contribution = alt.Chart(df_selected_countries).transform_fold(
 ).mark_bar().encode(
     x='sum(GVA):Q',
     y='country:N',
-    color=alt.Color('Industry:N', scale=alt.Scale(scheme='category20c')),
+    color=alt.Color('Industry:N'),
 ).properties(
     width=800,
     height=300,
