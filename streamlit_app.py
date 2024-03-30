@@ -42,8 +42,6 @@ df = data.rename(columns=rename_rules)
 df = df.fillna(0)
 
 
-
-
 world_geojson = vega_data.world_110m.url
 countries = alt.topo_feature(world_geojson, 'countries')
 
