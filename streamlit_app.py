@@ -89,6 +89,9 @@ df = data.rename(columns=rename_rules)
 df = df.fillna(0)
 df['country'] = df['country'].str.strip()
 
+description = df.describe()
+st.dataframe(description)
+
 world_geojson = vega_data.world_110m.url
 countries = alt.topo_feature(world_geojson, 'countries')
 
@@ -159,7 +162,7 @@ gdp_trend = alt.Chart(df_selected_countries).mark_line(point=True).encode(
     x='year:O',
     y=alt.Y('mean(gdp):Q', title='Average GDP'),
     color='country:N',
-    tooltip=['year:O', 'country:N']
+    tooltip=['year:O', 'country:N','mean(gdp):Q']
 ).properties(
     width=800,
     height=400,
@@ -170,7 +173,7 @@ manufacturing_gva_trend = alt.Chart(df_selected_countries).mark_line(point=True)
     x='year:O',
     y=alt.Y('mean(manufacturing_gva):Q'),
     color='country:N',
-    tooltip=['year:O', 'country:N']
+    tooltip=['year:O', 'country:N','mean(manufacturing_gva):Q']
 ).properties(
     width=800,
     height=400,
