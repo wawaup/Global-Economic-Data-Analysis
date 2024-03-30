@@ -44,8 +44,8 @@ def draw_pie_chart(data, country_name):
         title=f'{country_name}'
     )
 
-    pie_chart = base.mark_arc(outerRadius=80)
-    text = base.mark_text(radius=100, size=10).encode(
+    pie_chart = base.mark_arc(outerRadius=100)
+    text = base.mark_text(radius=110, size=10).encode(
         text=alt.Text('Percentage:Q', format='.1%'),
         theta=alt.Theta(field='Percentage', type='quantitative', stack=True)
     )
@@ -141,7 +141,7 @@ rank_chart = alt.Chart(df_top_countries).mark_bar().encode(
     color='year:N',  # 颜色按年份区分
     tooltip=['country', 'year', 'gdp']  # 鼠标悬停时显示的信息
 ).properties(
-    width=700,
+    width=800,
     height=400,
     title='Worldwide Countries\' GDP in 1970, 2000 and 2021'
 )
@@ -161,7 +161,7 @@ gdp_trend = alt.Chart(df_selected_countries).mark_line(point=True).encode(
     color='country:N',
     tooltip=['year:O', 'country:N']
 ).properties(
-    width=700,
+    width=800,
     height=400,
     title='GDP Trend Over Years for Selected Countries'
 )
@@ -172,7 +172,7 @@ manufacturing_gva_trend = alt.Chart(df_selected_countries).mark_line(point=True)
     color='country:N',
     tooltip=['year:O', 'country:N']
 ).properties(
-    width=700,
+    width=800,
     height=400,
     title='Manufacturing GVA Trend Over Years for Selected Countries'
 )
@@ -182,7 +182,7 @@ population_consumption = alt.Chart(df_selected_countries).mark_point().encode(
     y=alt.Y('household_consumption_expenditure:Q'),
     color='country:N',
 ).properties(
-    width=700,
+    width=800,
     height=400,
     title='Population vs. Household Consumption Expenditure for Selected Countries'
 )
@@ -196,8 +196,8 @@ industry_contribution = alt.Chart(df_selected_countries).transform_fold(
     y='country:N',
     color=alt.Color('Industry:N', scale=alt.Scale(scheme='category20c')),
 ).properties(
-    width=800,
-    height=300,
+    width=900,
+    height=350,
     title='Contribution of Different Industries to GDP for Selected Countries'
 )
 
