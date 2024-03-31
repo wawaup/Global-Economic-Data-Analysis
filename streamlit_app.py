@@ -90,7 +90,7 @@ df['country'] = df['country'].str.strip()
 
 st.title('Global Economy Data Analysis')
 
-st.header('Dataset')
+st.subheader('Dataset')
 st.write('The "Global Economy Indicators.csv" dataset consists of 10,512 records, encompassing detailed economic indicators of countries worldwide from 1970 to 2021. This dataset includes 26 fields, each representing a specific economic indicator, such as country ID, year, exchange rates, population, and the output value of various economic activities.')
 
 description = df.describe()
@@ -99,7 +99,7 @@ st.dataframe(description)
 world_geojson = vega_data.world_110m.url
 countries = alt.topo_feature(world_geojson, 'countries')
 
-st.header('Annual Global GDP Map')
+st.subheader('Annual Global GDP Map')
 st.write('You can select different years through a slider, and the map updates to display the global GDP distribution for that year.')
 year = st.slider('Select Year for Global GDP Data', min_value=df['year'].min(), max_value=df['year'].max(), step=1)
 
@@ -275,18 +275,18 @@ gdp_gni_correlation = alt.Chart(df_selected_countries).mark_circle().encode(
 
 st.altair_chart(map_chart)
 
-st.header('Historical Global GDP Ranking Change Bar Chart')
+st.subheader('Historical Global GDP Ranking Change Bar Chart')
 st.altair_chart(rank_chart)
 st.write('These changes reflect the shifting balance of global economic power, the rise of emerging market economies, and the adjustment of the relative positions of traditional economic powerhouses. These data emphasize how globalization has reshaped the economic map and revealed how some countries have expanded their influence through economic strategies and global trade networks. ')
 
-st.header('Selected Country Economic Indicator Trend Analysis Line Chart')
+st.subheader('Selected Country Economic Indicator Trend Analysis Line Chart')
 st.altair_chart(gdp_trend)
 st.write('The first line chart displays the GDP trend of the United States, China, and Japan from 1970 to 2020. The chart clearly shows the steady growth of the US GDP, maintaining its position as a world economic powerhouse. Since the 1990s, China\'s GDP growth rate has accelerated, especially after entering the 21st century, surpassing Japan in growth rate and rapidly catching up with the US, demonstrating its rise as an emerging economic superpower. After Japan\'s \"Lost Decade\" in the 1990s, its GDP growth slowed, contrasting with China and the US.')
 
 st.altair_chart(manufacturing_gva_trend)
 st.write('The second chart shows the trend of manufacturing GVA for these three countries. The manufacturing GVA of the US and China continued to grow, with China showing explosive growth since 2000, possibly due to its vigorous development of the manufacturing sector and export-oriented economic strategies. Meanwhile, Japan\'s manufacturing GVA changes were relatively stable, not showing the same growth momentum as China.')
 
-st.header('Selected Country Industry Contribution Ratio Chart')
+st.subheader('Selected Country Industry Contribution Ratio Chart')
 st.altair_chart(industry_contribution)
 
 us_pie = draw_pie_chart(df_selected_countries, 'United States')
@@ -297,7 +297,7 @@ pie_chart = alt.hconcat(us_pie, china_pie, japan_pie)
 st.altair_chart(pie_chart)
 st.write('These data show that while all three countries emphasize the importance of manufacturing in the economy, they also have their focus, reflecting different economic structures and stages of development. The economic structures of the US and China are more concentrated, especially in manufacturing, while Japan\'s economic structure is more diversified.')
 
-st.header('Export and Import Trend Line Chart and Trade Balance Chart')
+st.subheader('Export and Import Trend Line Chart and Trade Balance Chart')
 description = ['**China**: The speed of growth in both exports and imports was rapid, especially the remarkable growth in exports, resulting in China maintaining a significant trade surplus in most years, marking its status as a global manufacturing hub.',
                '**Japan**: Compared to China, Japan\'s export and import growth was relatively stable, maintaining a trade surplus for many years. However, in the early 21st century, as import growth accelerated, Japan\'s trade surplus diminished.',
                '**United States**: Although both exports and imports have grown, the growth rate of imports has been higher than that of exports, leading to a long-term trade deficit for the US. Particularly in recent years, an increased deficit may indicate a growing reliance on foreign products and services.']
@@ -305,12 +305,12 @@ for index,chart in enumerate(charts):
     st.altair_chart(chart)
     st.write(description[index])
 
-st.header('Population vs. Household Consumption Relationship Scatter Plot')
+st.subheader('Population vs. Household Consumption Relationship Scatter Plot')
 st.altair_chart(population_consumption)
 st.write('This graph reveals that the relationship between population size and household consumption expenditure is not simply linear. Although the US does not have the largest population size, its consumption expenditure is the highest, which may relate to the domestic consumption culture, credit systems, and personal wealth distribution.')
 st.write('On the other hand, despite having a huge population base, China still has a lot of growth potential in household consumption.')
 
-st.header('GDP and Per Capita GNI Relationship Scatter Plot')
+st.subheader('GDP and Per Capita GNI Relationship Scatter Plot')
 st.altair_chart(gdp_gni_correlation)
 st.write('The US and Japan points show some degree of positive correlation, indicating that as the GDP grows, the per capita GNI also increases accordingly.')
 st.write('In contrast, the growth in China\'s GDP has not brought the same level of growth in per capita GNI, which may suggest that the dividend of China\'s GDP growth has not fully translated into an increase in per capita wealth.')
